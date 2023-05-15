@@ -1,0 +1,76 @@
+body{
+    background-image: url(./back3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+form {
+    background-color: rgba(218, 206, 201, 0.2);
+    padding: 20px 0;
+    margin: 15% auto;
+    h2{
+        color: #fff;   
+    }
+    input{
+        margin: 1rem;
+        padding: 10px 100px 10px 9px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+    }
+    button{
+        display: block;
+        margin: 20px auto;
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: rgb(216, 119, 15);
+        outline: none;
+        border: none;
+        color: #fff;
+        cursor: pointer; 
+    }
+}
+
+// Bootstrap
+@mixin grid-creation($noOfCols,$screenName,$breakPoint){
+    @if ($screenName==""){
+        @media (min-width:$breakPoint){
+            @for $i from 1  through $noOfCols{
+                .col-#{$i}{
+                    width: ($i/$noOfCols)*100%;
+                }
+            }
+        }
+    }
+    @else{
+        @media (min-width:$breakPoint){
+            @for $i from 1  through $noOfCols{
+                .col-#{$screenName}-#{$i}{
+                    width: ($i/$noOfCols)*100%;
+                }
+            }
+        }
+    }
+}
+@include grid-creation(12,"",0px);
+@include grid-creation(12,"sm",500px);
+@include grid-creation(12,"md",900px);
+@include grid-creation(12,"lg",1200px);
+
+
+%row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin: auto;
+}
+.row {
+    @extend %row
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
